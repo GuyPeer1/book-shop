@@ -9,7 +9,7 @@ export const bookService = {
   query,
   get,
   remove,
-  // save,
+  save,
   getEmptyBook,
   getDefaultFilter,
 }
@@ -20,7 +20,16 @@ function get(bookId) {
 }
 
 function remove(bookId) {
+  console.log(bookId)
   return storageService.remove(BOOK_KEY, bookId)
+}
+
+function save(book) {
+  if (book.id) {
+      return storageService.put(BOOK_KEY, book)
+  } else {
+      return storageService.post(BOOK_KEY, book)
+  }
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -38,6 +47,31 @@ function query(filterBy = getDefaultFilter()) {
       }
       return books
     })
+}
+
+function _createBook() {
+  const book = getEmptyBook()
+  book.id = utilService.makeId()
+  book.title = 'metus hendrerit'
+  book.description = 'placerat nisi sodales suscipit tellus'
+  book.thumbnail = 'book'
+  book.listPrice.amount = '109'
+  book.listPrice.currencyCode = 'EUR'
+  book.listPrice.isOnSale = 'false'
+  return book
+}
+
+function getEmptyBook() {
+  const listPrice = { amount: '', currencyCode: '', isOnSale: '' }
+  return {
+    id: '', title: '', subtitle: '', authors: [''], publishedDate: '', description: '', pageCount: '',
+    categories: [''], thumbnail: '', language: [''], listPrice: listPrice
+  }
+
+}
+
+function getDefaultFilter() {
+  return { txt: '', minPrice: '', minPage: '' }
 }
 
 function _createBooks() {
@@ -490,26 +524,4 @@ function _createBooks() {
     // books.push(_createBook())
     utilService.saveToStorage(BOOK_KEY, books)
   }
-}
-
-function _createBook() {
-  const book = getEmptyBook()
-  book.id = utilService.makeId()
-  book.title = 'metus hendrerit'
-  book.description = 'placerat nisi sodales suscipit tellus'
-  book.thumbnail = 'book'
-  book.listPrice.amount = '109'
-  book.listPrice.currencyCode = 'EUR'
-  book.listPrice.isOnSale = 'false'
-  return book
-}
-
-function getEmptyBook() {
-  const listPrice = { amount: '', currencyCode: '', isOnSale: '' }
-  return { id: '', title: '', description: '', thumbnail: '', listPrice: listPrice }
-
-}
-
-function getDefaultFilter() {
-  return { txt: '', minPrice: '', minPage:'' }
 }

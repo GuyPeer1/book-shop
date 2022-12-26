@@ -9,7 +9,6 @@ export function BookPreview({ book }) {
         <h2>Book Name: {book.title}</h2>
         <div className="price-drop">{book.listPrice.isOnSale && 'PRICE DROP 💲✂️'}</div>
 
-        <div className='book-description'>{book.description}</div>
         <div className="img-container"><img src={book.thumbnail}></img></div>
         <div className={'price' + color}>
             Price: {price}{book.listPrice.currencyCode}</div>
