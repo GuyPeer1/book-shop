@@ -1,0 +1,24 @@
+.app-header {
+  background-color: var(--clr1);
+  color: var(--clr1bg);
+  padding: 1em;
+}
+
+.app-nav {
+  display: flex;
+  gap: 15px;
+}
+
+.app-nav a {
+cursor: pointer;
+}
+
+.app-nav a:hover {
+  opacity: 0.8;
+}
+
+@media(max-width: 720px) {
+  .app-header {
+    color: var(--clr2bg);
+  }
+}

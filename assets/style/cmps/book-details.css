@@ -1,0 +1,17 @@
+.book-details img {
+    width: 200px;
+}
+
+.book-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-details h1 {
+    font-size: 2em;
+}
+
+.book-details h5 {
+    font-size: 2em;
+}

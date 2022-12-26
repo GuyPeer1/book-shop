@@ -1,0 +1,33 @@
+.book-list {
+    padding: 15px 0 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.book-list li {
+
+    background-color: var(--clr1bg);
+}
+
+.book-preview h2{
+    text-transform: capitalize;
+    color: black;
+}
+
+.book-preview img {
+    max-width: 100px;
+}
+
+.book-preview .price.red{
+    color:red;
+}
+
+.book-preview .price.green{
+    color:green;
+}
+
+.book-preview .price-drop{
+    color: #f00;
+}
